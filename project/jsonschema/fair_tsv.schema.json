@@ -1,0 +1,115 @@
+{
+   "$defs": {
+      "Evaluation": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "CURIEs_are_syntactically_correct": {
+               "type": "string"
+            },
+            "avoids_empty_lines": {
+               "type": "string"
+            },
+            "avoids_extraneous_whitespace": {
+               "type": "string"
+            },
+            "avoids_problematic_characters": {
+               "type": "string"
+            },
+            "categorical_values_are_enumerated_in_schema": {
+               "type": "string"
+            },
+            "categorical_values_are_mapped_to_external_resources": {
+               "type": "string"
+            },
+            "data_is_tidy": {
+               "type": "string"
+            },
+            "dates_use_iso8601": {
+               "type": "string"
+            },
+            "has_column_header": {
+               "type": "string"
+            },
+            "identifiers_are_prefixed_CURIEs": {
+               "type": "string"
+            },
+            "includes_data_dictionary": {
+               "type": "string"
+            },
+            "includes_mappings_to_other_schemas": {
+               "type": "string"
+            },
+            "includes_metadata_header": {
+               "type": "string"
+            },
+            "prefixes_are_declared_and_consistent_with_registries": {
+               "type": "string"
+            },
+            "prefixes_have_URI_expansions": {
+               "type": "string"
+            },
+            "uses_correct_encoding": {
+               "type": "string"
+            },
+            "uses_correct_quotation": {
+               "type": "string"
+            },
+            "uses_tab_separators": {
+               "$ref": "#/$defs/UsesTabSeparatorsResult"
+            },
+            "uses_unix_newline_characters": {
+               "type": "string"
+            },
+            "validates_using_schema": {
+               "type": "string"
+            }
+         },
+         "required": [],
+         "title": "Evaluation",
+         "type": "object"
+      },
+      "Result": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "has_evaluation": {
+               "$ref": "#/$defs/Evaluation"
+            },
+            "input": {
+               "type": "string"
+            }
+         },
+         "required": [],
+         "title": "Result",
+         "type": "object"
+      },
+      "UsesTabSeparatorsResult": {
+         "description": "",
+         "enum": [
+            "unable to determine",
+            "tab separated",
+            "command separated",
+            "uses non standard"
+         ],
+         "title": "UsesTabSeparatorsResult",
+         "type": "string"
+      }
+   },
+   "$id": "https://w3id.org/linkml/fair_tsv",
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "additionalProperties": true,
+   "metamodel_version": "1.7.0",
+   "properties": {
+      "has_evaluation": {
+         "$ref": "#/$defs/Evaluation"
+      },
+      "input": {
+         "type": "string"
+      }
+   },
+   "required": [],
+   "title": "fair_tsv",
+   "type": "object",
+   "version": null
+}

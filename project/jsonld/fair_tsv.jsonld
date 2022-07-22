@@ -1,0 +1,682 @@
+{
+  "name": "fair_tsv",
+  "description": "Rubrics for FAIR evaluation of TSVs",
+  "title": "FAIR TSV Rubrics",
+  "see_also": [
+    "https://example.org/"
+  ],
+  "id": "https://w3id.org/linkml/fair_tsv",
+  "imports": [
+    "linkml:types"
+  ],
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "prefixes": [
+    {
+      "prefix_prefix": "ft",
+      "prefix_reference": "https://w3id.org/linkml/fair_tsv"
+    },
+    {
+      "prefix_prefix": "linkml",
+      "prefix_reference": "https://w3id.org/linkml/"
+    },
+    {
+      "prefix_prefix": "biolink",
+      "prefix_reference": "https://w3id.org/biolink/"
+    },
+    {
+      "prefix_prefix": "schema",
+      "prefix_reference": "http://schema.org/"
+    },
+    {
+      "prefix_prefix": "PATO",
+      "prefix_reference": "http://purl.obolibrary.org/obo/PATO_"
+    },
+    {
+      "prefix_prefix": "famrel",
+      "prefix_reference": "http://example.org/famrel/"
+    }
+  ],
+  "default_curi_maps": [
+    "semweb_context"
+  ],
+  "default_prefix": "ft",
+  "default_range": "string",
+  "types": [
+    {
+      "name": "string",
+      "definition_uri": "https://w3id.org/linkml/String",
+      "description": "A character string",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "integer",
+      "definition_uri": "https://w3id.org/linkml/Integer",
+      "description": "An integer",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "int",
+      "uri": "http://www.w3.org/2001/XMLSchema#integer",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "boolean",
+      "definition_uri": "https://w3id.org/linkml/Boolean",
+      "description": "A binary (true or false) value",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "Bool",
+      "uri": "http://www.w3.org/2001/XMLSchema#boolean",
+      "repr": "bool",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "float",
+      "definition_uri": "https://w3id.org/linkml/Float",
+      "description": "A real number that conforms to the xsd:float specification",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "float",
+      "uri": "http://www.w3.org/2001/XMLSchema#float",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "double",
+      "definition_uri": "https://w3id.org/linkml/Double",
+      "description": "A real number that conforms to the xsd:double specification",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "float",
+      "uri": "http://www.w3.org/2001/XMLSchema#double",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "decimal",
+      "definition_uri": "https://w3id.org/linkml/Decimal",
+      "description": "A real number with arbitrary precision that conforms to the xsd:decimal specification",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "Decimal",
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "time",
+      "definition_uri": "https://w3id.org/linkml/Time",
+      "description": "A time object represents a (local) time of day, independent of any particular day",
+      "notes": [
+        "URI is dateTime because OWL reasoners don't work with straight date or time"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "XSDTime",
+      "uri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "date",
+      "definition_uri": "https://w3id.org/linkml/Date",
+      "description": "a date (year, month and day) in an idealized calendar",
+      "notes": [
+        "URI is dateTime because OWL reasoners don't work with straight date or time"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "XSDDate",
+      "uri": "http://www.w3.org/2001/XMLSchema#date",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "datetime",
+      "definition_uri": "https://w3id.org/linkml/Datetime",
+      "description": "The combination of a date and time",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "XSDDateTime",
+      "uri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "uriorcurie",
+      "definition_uri": "https://w3id.org/linkml/Uriorcurie",
+      "description": "a URI or a CURIE",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "URIorCURIE",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "uri",
+      "definition_uri": "https://w3id.org/linkml/Uri",
+      "description": "a complete URI",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "URI",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "ncname",
+      "definition_uri": "https://w3id.org/linkml/Ncname",
+      "description": "Prefix part of CURIE",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "NCName",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "objectidentifier",
+      "definition_uri": "https://w3id.org/linkml/Objectidentifier",
+      "description": "A URI or CURIE that represents an object in the model.",
+      "comments": [
+        "Used for inheritence and type checking"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "ElementIdentifier",
+      "uri": "http://www.w3.org/ns/shex#iri",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "nodeidentifier",
+      "definition_uri": "https://w3id.org/linkml/Nodeidentifier",
+      "description": "A URI, CURIE or BNODE that represents a node in a model.",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "NodeIdentifier",
+      "uri": "http://www.w3.org/ns/shex#nonLiteral",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    }
+  ],
+  "enums": [
+    {
+      "name": "uses tab separators result",
+      "definition_uri": "https://w3id.org/linkml/fair_tsvUsesTabSeparatorsResult",
+      "from_schema": "https://w3id.org/linkml/fair_tsv",
+      "permissible_values": [
+        {
+          "text": "unable to determine",
+          "annotations": [
+            {
+              "tag": "score",
+              "value": "0"
+            }
+          ]
+        },
+        {
+          "text": "tab separated",
+          "annotations": [
+            {
+              "tag": "score",
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "text": "command separated",
+          "annotations": [
+            {
+              "tag": "score",
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "text": "uses non standard",
+          "annotations": [
+            {
+              "tag": "score",
+              "value": "-1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "slots": [
+    {
+      "name": "result__input",
+      "from_schema": "https://w3id.org/linkml/fair_tsv",
+      "slot_uri": "https://w3id.org/linkml/fair_tsvinput",
+      "alias": "input",
+      "owner": "Result",
+      "domain_of": [
+        "Result"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "result__has_evaluation",
+      "from_schema": "https://w3id.org/linkml/fair_tsv",
+      "slot_uri": "https://w3id.org/linkml/fair_tsvhas_evaluation",
+      "inlined": true,
+      "alias": "has_evaluation",
+      "owner": "Result",
+      "domain_of": [
+        "Result"
+      ],
+      "range": "Evaluation",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "evaluation__uses_tab_separators",
+      "annotations": [
+        {
+          "tag": "justification",
+          "value": "tabs are most computable",
+          "@type": "Annotation"
+        }
+      ],
+      "from_schema": "https://w3id.org/linkml/fair_tsv",
+      "slot_uri": "https://w3id.org/linkml/fair_tsvuses_tab_separators",
+      "alias": "uses_tab_separators",
+      "owner": "Evaluation",
+      "domain_of": [
+        "Evaluation"
+      ],
+      "range": "uses tab separators result",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "evaluation__uses_unix_newline_characters",
+      "from_schema": "https://w3id.org/linkml/fair_tsv",
+      "slot_uri": "https://w3id.org/linkml/fair_tsvuses_unix_newline_characters",
+      "alias": "uses_unix_newline_characters",
+      "owner": "Evaluation",
+      "domain_of": [
+        "Evaluation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "evaluation__uses_correct_quotation",
+      "from_schema": "https://w3id.org/linkml/fair_tsv",
+      "slot_uri": "https://w3id.org/linkml/fair_tsvuses_correct_quotation",
+      "alias": "uses_correct_quotation",
+      "owner": "Evaluation",
+      "domain_of": [
+        "Evaluation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "evaluation__avoids_extraneous_whitespace",
+      "from_schema": "https://w3id.org/linkml/fair_tsv",
+      "slot_uri": "https://w3id.org/linkml/fair_tsvavoids_extraneous_whitespace",
+      "alias": "avoids_extraneous_whitespace",
+      "owner": "Evaluation",
+      "domain_of": [
+        "Evaluation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "evaluation__avoids_problematic_characters",
+      "from_schema": "https://w3id.org/linkml/fair_tsv",
+      "slot_uri": "https://w3id.org/linkml/fair_tsvavoids_problematic_characters",
+      "alias": "avoids_problematic_characters",
+      "owner": "Evaluation",
+      "domain_of": [
+        "Evaluation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "evaluation__avoids_empty_lines",
+      "from_schema": "https://w3id.org/linkml/fair_tsv",
+      "slot_uri": "https://w3id.org/linkml/fair_tsvavoids_empty_lines",
+      "alias": "avoids_empty_lines",
+      "owner": "Evaluation",
+      "domain_of": [
+        "Evaluation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "evaluation__uses_correct_encoding",
+      "from_schema": "https://w3id.org/linkml/fair_tsv",
+      "slot_uri": "https://w3id.org/linkml/fair_tsvuses_correct_encoding",
+      "alias": "uses_correct_encoding",
+      "owner": "Evaluation",
+      "domain_of": [
+        "Evaluation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "evaluation__has_column_header",
+      "from_schema": "https://w3id.org/linkml/fair_tsv",
+      "slot_uri": "https://w3id.org/linkml/fair_tsvhas_column_header",
+      "alias": "has_column_header",
+      "owner": "Evaluation",
+      "domain_of": [
+        "Evaluation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "evaluation__includes_metadata_header",
+      "from_schema": "https://w3id.org/linkml/fair_tsv",
+      "slot_uri": "https://w3id.org/linkml/fair_tsvincludes_metadata_header",
+      "alias": "includes_metadata_header",
+      "owner": "Evaluation",
+      "domain_of": [
+        "Evaluation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "evaluation__includes_data_dictionary",
+      "from_schema": "https://w3id.org/linkml/fair_tsv",
+      "slot_uri": "https://w3id.org/linkml/fair_tsvincludes_data_dictionary",
+      "alias": "includes_data_dictionary",
+      "owner": "Evaluation",
+      "domain_of": [
+        "Evaluation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "evaluation__includes_mappings_to_other_schemas",
+      "from_schema": "https://w3id.org/linkml/fair_tsv",
+      "slot_uri": "https://w3id.org/linkml/fair_tsvincludes_mappings_to_other_schemas",
+      "alias": "includes_mappings_to_other_schemas",
+      "owner": "Evaluation",
+      "domain_of": [
+        "Evaluation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "evaluation__dates_use_iso8601",
+      "from_schema": "https://w3id.org/linkml/fair_tsv",
+      "slot_uri": "https://w3id.org/linkml/fair_tsvdates_use_iso8601",
+      "alias": "dates_use_iso8601",
+      "owner": "Evaluation",
+      "domain_of": [
+        "Evaluation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "evaluation__identifiers_are_prefixed_CURIEs",
+      "from_schema": "https://w3id.org/linkml/fair_tsv",
+      "slot_uri": "https://w3id.org/linkml/fair_tsvidentifiers_are_prefixed_CURIEs",
+      "alias": "identifiers_are_prefixed_CURIEs",
+      "owner": "Evaluation",
+      "domain_of": [
+        "Evaluation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "evaluation__CURIEs_are_syntactically_correct",
+      "from_schema": "https://w3id.org/linkml/fair_tsv",
+      "slot_uri": "https://w3id.org/linkml/fair_tsvCURIEs_are_syntactically_correct",
+      "alias": "CURIEs_are_syntactically_correct",
+      "owner": "Evaluation",
+      "domain_of": [
+        "Evaluation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "evaluation__prefixes_are_declared_and_consistent_with_registries",
+      "from_schema": "https://w3id.org/linkml/fair_tsv",
+      "slot_uri": "https://w3id.org/linkml/fair_tsvprefixes_are_declared_and_consistent_with_registries",
+      "alias": "prefixes_are_declared_and_consistent_with_registries",
+      "owner": "Evaluation",
+      "domain_of": [
+        "Evaluation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "evaluation__prefixes_have_URI_expansions",
+      "from_schema": "https://w3id.org/linkml/fair_tsv",
+      "slot_uri": "https://w3id.org/linkml/fair_tsvprefixes_have_URI_expansions",
+      "alias": "prefixes_have_URI_expansions",
+      "owner": "Evaluation",
+      "domain_of": [
+        "Evaluation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "evaluation__categorical_values_are_enumerated_in_schema",
+      "from_schema": "https://w3id.org/linkml/fair_tsv",
+      "slot_uri": "https://w3id.org/linkml/fair_tsvcategorical_values_are_enumerated_in_schema",
+      "alias": "categorical_values_are_enumerated_in_schema",
+      "owner": "Evaluation",
+      "domain_of": [
+        "Evaluation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "evaluation__categorical_values_are_mapped_to_external_resources",
+      "from_schema": "https://w3id.org/linkml/fair_tsv",
+      "slot_uri": "https://w3id.org/linkml/fair_tsvcategorical_values_are_mapped_to_external_resources",
+      "alias": "categorical_values_are_mapped_to_external_resources",
+      "owner": "Evaluation",
+      "domain_of": [
+        "Evaluation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "evaluation__data_is_tidy",
+      "from_schema": "https://w3id.org/linkml/fair_tsv",
+      "slot_uri": "https://w3id.org/linkml/fair_tsvdata_is_tidy",
+      "alias": "data_is_tidy",
+      "owner": "Evaluation",
+      "domain_of": [
+        "Evaluation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "evaluation__validates_using_schema",
+      "from_schema": "https://w3id.org/linkml/fair_tsv",
+      "slot_uri": "https://w3id.org/linkml/fair_tsvvalidates_using_schema",
+      "alias": "validates_using_schema",
+      "owner": "Evaluation",
+      "domain_of": [
+        "Evaluation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    }
+  ],
+  "classes": [
+    {
+      "name": "Result",
+      "definition_uri": "https://w3id.org/linkml/fair_tsvResult",
+      "from_schema": "https://w3id.org/linkml/fair_tsv",
+      "slots": [
+        "result__input",
+        "result__has_evaluation"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "input",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "has_evaluation",
+          "range": "Evaluation",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/linkml/fair_tsvResult",
+      "tree_root": true,
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Evaluation",
+      "definition_uri": "https://w3id.org/linkml/fair_tsvEvaluation",
+      "from_schema": "https://w3id.org/linkml/fair_tsv",
+      "slots": [
+        "evaluation__uses_tab_separators",
+        "evaluation__uses_unix_newline_characters",
+        "evaluation__uses_correct_quotation",
+        "evaluation__avoids_extraneous_whitespace",
+        "evaluation__avoids_problematic_characters",
+        "evaluation__avoids_empty_lines",
+        "evaluation__uses_correct_encoding",
+        "evaluation__has_column_header",
+        "evaluation__includes_metadata_header",
+        "evaluation__includes_data_dictionary",
+        "evaluation__includes_mappings_to_other_schemas",
+        "evaluation__dates_use_iso8601",
+        "evaluation__identifiers_are_prefixed_CURIEs",
+        "evaluation__CURIEs_are_syntactically_correct",
+        "evaluation__prefixes_are_declared_and_consistent_with_registries",
+        "evaluation__prefixes_have_URI_expansions",
+        "evaluation__categorical_values_are_enumerated_in_schema",
+        "evaluation__categorical_values_are_mapped_to_external_resources",
+        "evaluation__data_is_tidy",
+        "evaluation__validates_using_schema"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "uses_tab_separators",
+          "annotations": [
+            {
+              "tag": "justification",
+              "value": "tabs are most computable",
+              "@type": "Annotation"
+            }
+          ],
+          "range": "uses tab separators result",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "uses_unix_newline_characters",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "uses_correct_quotation",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "avoids_extraneous_whitespace",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "avoids_problematic_characters",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "avoids_empty_lines",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "uses_correct_encoding",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "has_column_header",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "includes_metadata_header",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "includes_data_dictionary",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "includes_mappings_to_other_schemas",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dates_use_iso8601",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "identifiers_are_prefixed_CURIEs",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "CURIEs_are_syntactically_correct",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "prefixes_are_declared_and_consistent_with_registries",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "prefixes_have_URI_expansions",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "categorical_values_are_enumerated_in_schema",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "categorical_values_are_mapped_to_external_resources",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "data_is_tidy",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "validates_using_schema",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/linkml/fair_tsvEvaluation",
+      "@type": "ClassDefinition"
+    }
+  ],
+  "metamodel_version": "1.7.0",
+  "source_file": "fair_tsv.yaml",
+  "source_file_date": "2022-05-07T20:12:46",
+  "source_file_size": 2091,
+  "generation_date": "2022-05-07T20:12:49",
+  "@type": "SchemaDefinition",
+  "@context": [
+    "project/jsonld/fair_tsv.context.jsonld",
+    "https://w3id.org/linkml/types.context.jsonld",
+    {
+      "@base": "https://w3id.org/linkml/fair_tsv"
+    }
+  ]
+}

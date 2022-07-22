@@ -1,0 +1,3 @@
+name: fair-tsv
+description: FAIR evaluation of TSV files
+source_schema_path: src/linkml/fair_tsv.yaml

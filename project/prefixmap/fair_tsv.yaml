@@ -1,0 +1,8 @@
+{
+   "PATO": "http://purl.obolibrary.org/obo/PATO_",
+   "biolink": "https://w3id.org/biolink/",
+   "famrel": "http://example.org/famrel/",
+   "ft": "https://w3id.org/linkml/fair_tsv",
+   "linkml": "https://w3id.org/linkml/",
+   "schema": "http://schema.org/"
+}

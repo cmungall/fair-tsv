@@ -1,0 +1,269 @@
+@prefix IAO: <http://purl.obolibrary.org/obo/IAO_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ft: <https://w3id.org/linkml/fair_tsv> .
+@prefix linkml: <https://w3id.org/linkml/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+linkml:SubsetDefinition a owl:Class ;
+    rdfs:label "subset_definition" .
+
+linkml:TypeDefinition a owl:Class ;
+    rdfs:label "type_definition" .
+
+ft: a owl:Ontology ;
+    rdfs:label "fair_tsv" ;
+    IAO:0000700 ft:Evaluation,
+        ft:Result ;
+    dcterms:license "https://creativecommons.org/publicdomain/zero/1.0/" ;
+    dcterms:title "FAIR TSV Rubrics" ;
+    rdfs:seeAlso "https://example.org/" ;
+    linkml:generation_date "2022-05-07T20:12:51" ;
+    linkml:metamodel_version "1.7.0" ;
+    linkml:source_file "fair_tsv.yaml" ;
+    linkml:source_file_date "2022-05-07T20:12:46" ;
+    linkml:source_file_size 2091 .
+
+linkml:topValue a owl:DatatypeProperty ;
+    rdfs:label "value" .
+
+ft:CURIEs_are_syntactically_correct a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "CURIEs are syntactically correct" ;
+    rdfs:range linkml:String .
+
+ft:Result a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Result" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass ft:Evaluation ;
+            owl:onProperty ft:has_evaluation ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ft:input ] .
+
+ft:avoids_empty_lines a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "avoids empty lines" ;
+    rdfs:range linkml:String .
+
+ft:avoids_extraneous_whitespace a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "avoids extraneous whitespace" ;
+    rdfs:range linkml:String .
+
+ft:avoids_problematic_characters a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "avoids problematic characters" ;
+    rdfs:range linkml:String .
+
+ft:categorical_values_are_enumerated_in_schema a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "categorical values are enumerated in schema" ;
+    rdfs:range linkml:String .
+
+ft:categorical_values_are_mapped_to_external_resources a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "categorical values are mapped to external resources" ;
+    rdfs:range linkml:String .
+
+ft:data_is_tidy a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "data is tidy" ;
+    rdfs:range linkml:String .
+
+ft:dates_use_iso8601 a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dates use iso8601" ;
+    rdfs:range linkml:String .
+
+ft:has_column_header a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "has column header" ;
+    rdfs:range linkml:String .
+
+ft:has_evaluation a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "has_evaluation" ;
+    rdfs:range ft:Evaluation .
+
+ft:identifiers_are_prefixed_CURIEs a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "identifiers are prefixed CURIEs" ;
+    rdfs:range linkml:String .
+
+ft:includes_data_dictionary a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "includes data dictionary" ;
+    rdfs:range linkml:String .
+
+ft:includes_mappings_to_other_schemas a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "includes mappings to other schemas" ;
+    rdfs:range linkml:String .
+
+ft:includes_metadata_header a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "includes metadata header" ;
+    rdfs:range linkml:String .
+
+ft:input a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "input" ;
+    rdfs:range linkml:String .
+
+ft:prefixes_are_declared_and_consistent_with_registries a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "prefixes are declared and consistent with registries" ;
+    rdfs:range linkml:String .
+
+ft:prefixes_have_URI_expansions a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "prefixes have URI expansions" ;
+    rdfs:range linkml:String .
+
+ft:uses_correct_encoding a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "uses correct encoding" ;
+    rdfs:range linkml:String .
+
+ft:uses_correct_quotation a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "uses correct quotation" ;
+    rdfs:range linkml:String .
+
+ft:uses_tab_separators a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "uses tab separators" ;
+    rdfs:range ft:UsesTabSeparatorsResult .
+
+ft:uses_unix_newline_characters a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "uses unix newline characters" ;
+    rdfs:range linkml:String .
+
+ft:validates_using_schema a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "validates using schema" ;
+    rdfs:range linkml:String .
+
+linkml:ClassDefinition a owl:Class ;
+    rdfs:label "class_definition" .
+
+<https://w3id.org/linkml/fair_tsvUsesTabSeparatorsResult#command+separated> a owl:Class,
+        ft:UsesTabSeparatorsResult ;
+    rdfs:label "command separated" .
+
+<https://w3id.org/linkml/fair_tsvUsesTabSeparatorsResult#tab+separated> a owl:Class,
+        ft:UsesTabSeparatorsResult ;
+    rdfs:label "tab separated" .
+
+<https://w3id.org/linkml/fair_tsvUsesTabSeparatorsResult#unable+to+determine> a owl:Class,
+        ft:UsesTabSeparatorsResult ;
+    rdfs:label "unable to determine" .
+
+<https://w3id.org/linkml/fair_tsvUsesTabSeparatorsResult#uses+non+standard> a owl:Class,
+        ft:UsesTabSeparatorsResult ;
+    rdfs:label "uses non standard" .
+
+ft:Evaluation a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Evaluation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ft:uses_correct_encoding ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ft:includes_mappings_to_other_schemas ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ft:dates_use_iso8601 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ft:categorical_values_are_mapped_to_external_resources ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ft:includes_metadata_header ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ft:has_column_header ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ft:identifiers_are_prefixed_CURIEs ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ft:CURIEs_are_syntactically_correct ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ft:prefixes_have_URI_expansions ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ft:categorical_values_are_enumerated_in_schema ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ft:uses_unix_newline_characters ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ft:uses_correct_quotation ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ft:avoids_problematic_characters ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ft:avoids_extraneous_whitespace ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ft:includes_data_dictionary ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass ft:UsesTabSeparatorsResult ;
+            owl:onProperty ft:uses_tab_separators ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ft:data_is_tidy ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ft:prefixes_are_declared_and_consistent_with_registries ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ft:validates_using_schema ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ft:avoids_empty_lines ] .
+
+ft:UsesTabSeparatorsResult a owl:Class,
+        linkml:EnumDefinition ;
+    rdfs:label "uses tab separators result" ;
+    owl:unionOf ( <https://w3id.org/linkml/fair_tsvUsesTabSeparatorsResult#unable+to+determine> <https://w3id.org/linkml/fair_tsvUsesTabSeparatorsResult#tab+separated> <https://w3id.org/linkml/fair_tsvUsesTabSeparatorsResult#command+separated> <https://w3id.org/linkml/fair_tsvUsesTabSeparatorsResult#uses+non+standard> ) ;
+    linkml:permissible_values <https://w3id.org/linkml/fair_tsvUsesTabSeparatorsResult#command+separated>,
+        <https://w3id.org/linkml/fair_tsvUsesTabSeparatorsResult#tab+separated>,
+        <https://w3id.org/linkml/fair_tsvUsesTabSeparatorsResult#unable+to+determine>,
+        <https://w3id.org/linkml/fair_tsvUsesTabSeparatorsResult#uses+non+standard> .
+
+linkml:SlotDefinition a owl:Class ;
+    rdfs:label "slot_definition" .
+
+

@@ -1,0 +1,113 @@
+id: https://w3id.org/linkml/fair_tsv
+name: fair_tsv
+title: FAIR TSV Rubrics
+description: |-
+  Rubrics for FAIR evaluation of TSVs
+default_curi_maps:
+  - semweb_context
+imports:
+  - linkml:types
+prefixes:
+  ft: https://w3id.org/linkml/fair_tsv
+  linkml: https://w3id.org/linkml/
+  biolink: https://w3id.org/biolink/
+  schema: http://schema.org/
+  PATO: http://purl.obolibrary.org/obo/PATO_
+  famrel: http://example.org/famrel/
+default_prefix: ft
+default_range: string
+see_also:
+  - https://example.org/
+
+
+classes:
+
+  Result:
+    tree_root: true
+    attributes:
+      input:
+      has_evaluation:
+        range: Evaluation
+  Evaluation:
+    attributes:
+      
+      # syntactic
+      uses tab separators:
+        range: uses tab separators result
+        annotations:
+          justification: tabs are most computable
+      uses unix newline characters:
+#        range: uses unix newline characters
+      uses correct quotation:
+      avoids extraneous whitespace:
+      avoids problematic characters:
+      avoids empty lines:
+      uses correct encoding:
+      has column header row:
+      column headers are sane:
+      all rows have same number of columns:
+      metadata section clearly delineated:
+
+      # filename
+      filename uses computable character set:
+      has appropriate suffix:
+      indicates schema as suffix:
+
+      # 
+      
+
+      # data dictionary
+      includes metadata header:
+
+      includes data dictionary:
+
+      all column headers are in data dictionary:
+        
+      includes mappings to other schemas:
+
+      # dates
+      dates use iso8601:
+      
+      # identifiers
+      identifiers are prefixed CURIEs:
+      CURIEs are syntactically correct:
+      prefixes are declared and consistent with registries:
+      prefixes have URI expansions:
+
+      # categorical values
+      categorical values are enumerated in schema:
+      categorical values are mapped to external resources:
+
+      # units and measurements
+      units are standardized:
+      units are in separate column from quantity values:
+      units are not implicit:
+
+      # null values
+
+      # structure
+      data is tidy:
+      validates using schema:
+      has deterministic line ordering:
+      
+      
+
+enums:
+  uses tab separators result:
+    permissible_values:
+      unable to determine:
+        annotations:
+          score: 0
+      tab separated:
+        annotations:
+          score: 2
+      command separated:
+        annotations:
+          score: 2
+      uses non standard:
+        annotations:
+          score: -1
+
+        
+        
+      

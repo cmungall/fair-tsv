@@ -1,0 +1,28 @@
+message Evaluation
+ {
+  optional usesTabSeparators UsesTabSeparatorsResult = 1
+  optional usesUnixNewlineCharacters String = 2
+  optional usesCorrectQuotation String = 3
+  optional avoidsExtraneousWhitespace String = 4
+  optional avoidsProblematicCharacters String = 5
+  optional avoidsEmptyLines String = 6
+  optional usesCorrectEncoding String = 7
+  optional hasColumnHeader String = 8
+  optional includesMetadataHeader String = 9
+  optional includesDataDictionary String = 10
+  optional includesMappingsToOtherSchemas String = 11
+  optional datesUseIso8601 String = 12
+  optional identifiersArePrefixedCURIEs String = 13
+  optional cURIEsAreSyntacticallyCorrect String = 14
+  optional prefixesAreDeclaredAndConsistentWithRegistries String = 15
+  optional prefixesHaveURIExpansions String = 16
+  optional categoricalValuesAreEnumeratedInSchema String = 17
+  optional categoricalValuesAreMappedToExternalResources String = 18
+  optional dataIsTidy String = 19
+  optional validatesUsingSchema String = 20
+ }
+message Result
+ {
+  optional input String = 1
+  optional hasEvaluation Evaluation = 2
+ }

@@ -1,0 +1,30 @@
+type Evaluation
+  {
+    usesTabSeparators: UsesTabSeparatorsResult
+    usesUnixNewlineCharacters: String
+    usesCorrectQuotation: String
+    avoidsExtraneousWhitespace: String
+    avoidsProblematicCharacters: String
+    avoidsEmptyLines: String
+    usesCorrectEncoding: String
+    hasColumnHeader: String
+    includesMetadataHeader: String
+    includesDataDictionary: String
+    includesMappingsToOtherSchemas: String
+    datesUseIso8601: String
+    identifiersArePrefixedCURIEs: String
+    cURIEsAreSyntacticallyCorrect: String
+    prefixesAreDeclaredAndConsistentWithRegistries: String
+    prefixesHaveURIExpansions: String
+    categoricalValuesAreEnumeratedInSchema: String
+    categoricalValuesAreMappedToExternalResources: String
+    dataIsTidy: String
+    validatesUsingSchema: String
+  }
+
+type Result
+  {
+    input: String
+    hasEvaluation: Evaluation
+  }
+
